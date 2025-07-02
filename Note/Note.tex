@@ -1,0 +1,1433 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% header.tex
+
+% \documentclass{article}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{xeCJK}  % for handling chinese, japanese, korean
+\usepackage{hyperref}
+% 
+% \usepackage{arxiv}
+% \usepackage[utf8]{inputenc} % allow utf-8 input
+% \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+% \usepackage{url}            % simple URL typesetting
+% \usepackage{booktabs}       % professional-quality tables
+% \usepackage{amsfonts}       % blackboard math symbols
+% \usepackage{nicefrac}       % compact symbols for 1/2, etc.
+% \usepackage{microtype}      % microtypography
+% \usepackage{graphicx}
+% \usepackage{natbib}
+% \usepackage{doi}
+% \usepackage{float} %
+% \usepackage{amsmath} %
+
+
+\setCJKmainfont{標楷體}  % set main font
+
+\pagestyle{fancy}
+\fancyhf{}  % clears the header and footer
+\renewcommand{\footrulewidth}{0.6pt}  % Change the thickness of the line (0.4pt is the default)
+\renewcommand{\headrulewidth}{0.6pt}
+
+% helps to wrap up codes and texts
+% unfortunately, the output will be very ugly
+% Note: "pandoc_args: --listings" is a must in the .Rmd file
+%\lstset{
+    %breaklines = true,
+%}
+
+% Add text above/below the header/footer line
+% \lhead{\textit{R Note}}
+% \lhead{\textit{\nouppercase{\leftmark}}: \textit{\nouppercase{\rightmark}}  % Show section name on the top left of every page
+\lhead{\textit{\nouppercase{\leftmark}: \nouppercase{\rightmark}}}  % Show section name on the top left of every page
+\rhead{\thepage}  % Place the page number on the right side of the footer
+\lfoot{\hyperref[sec:ToC]{\textcolor{blue}{Back to \textbf{Table of Contents}}}}  % date
+\rfoot{\textit{\copyright\ Created by Potumas Liu}}  % Replace with your desired text
+
+\newcommand{\sectionbreak}{\clearpage}
+\renewcommand{\and}{\\}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={R Note},
+  pdfauthor={Chih-Tse Liu},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{R Note}
+\author{Chih-Tse Liu}
+\date{21 June, 2024}
+
+\begin{document}
+\maketitle
+
+\section{Table of Contents}
+\label{sec:ToC}
+\begin{enumerate}
+\item \hyperref[sec:BRS]{Basic R Syntax}
+  \begin{enumerate}
+  \item \hyperref[sec:BRS-basics]{Basics}
+  \item \hyperref[sec:BRS-math]{Math}
+  \item \hyperref[sec:BRS-conditions]{Conditions}
+  \item \hyperref[sec:BRS-loops]{Loops}
+  \item \hyperref[sec:BRS-function]{Function}
+  \item \hyperref[sec:BRS-]{}
+  \item \hyperref[sec:BRS-]{}
+  \end{enumerate}
+\item \hyperref[sec:VAR]{Data Type}
+  \begin{enumerate}
+  \item \hyperref[sec:VAR-numeric]{Numeric}
+  \item \hyperref[sec:VAR-integer]{Integer}
+  \item \hyperref[sec:VAR-character]{Character}
+  \item \hyperref[sec:VAR-logical]{Logical}
+  \item \hyperref[sec:VAR-factor]{Factor}
+  \item \hyperref[sec:VAR-complex]{Complex}
+  \item \hyperref[sec:VAR-]{}
+  \end{enumerate}
+\item \hyperref[sec:DS]{Data Structure}
+  \begin{enumerate}
+  \item \hyperref[sec:DS-vector]{Vector}
+  \item \hyperref[sec:DS-array]{Array}
+  \item \hyperref[sec:DS-dataframe]{Data Frame}
+  \item \hyperref[sec:DS-list]{List}
+  \item \hyperref[sec:DS-matrix]{Matrix}
+  \item \hyperref[sec:DS-]{}
+  \item \hyperref[sec:DS-]{}
+  \item \hyperref[sec:DS-]{}
+  \item \hyperref[sec:DS-]{}
+  \end{enumerate}
+\item \hyperref[sec:Fig]{Figures}
+  \begin{enumerate}
+  \item \hyperref[sec:Fig-]{Scatter Plot}
+  \item \hyperref[sec:Fig-]{Box Plot}
+  \item \hyperref[sec:Fig-]{}
+  \end{enumerate}
+\item \hyperref[sec:SA]{Statistical Analysis}
+  \begin{enumerate}
+  \item \hyperref[sec:SA-EDA]{Exploratory Data Analysis}
+  \item \hyperref[sec:SA-LR]{Linear Regression}
+  \item \hyperref[sec:SA-PCA]{Principal Component Analysis}
+  \item \hyperref[sec:SA-FA]{Factor Analysis}
+  \item \hyperref[sec:SA-CA]{Clustering Analysis}
+  \item \hyperref[sec:SA-DA]{Discriminant Analysis}
+  \item \hyperref[sec:SA-SEM]{Structural Equation Modelling}
+  \item \hyperref[sec:SA-]{}
+  \end{enumerate}
+\item \hyperref[sec:SM]{String Manipulation}
+  \begin{enumerate}
+  \item \hyperref[sec:SM-]{}
+  \item \hyperref[sec:SM-]{}
+  \item \hyperref[sec:SM-]{}
+  \end{enumerate}
+\item \hyperref[sec:Pkg]{Packages}
+  \begin{enumerate}
+  \item \hyperref[sec:Pkg-]{}
+  \item \hyperref[sec:Pkg-]{}
+  \item \hyperref[sec:Pkg-]{}
+  \end{enumerate}
+\item \hyperref[sec:Misc]{Misc}
+  \begin{enumerate}
+  \item \hyperref[sec:Misc-]{}
+  \item \hyperref[sec:Misc-]{}
+  \item \hyperref[sec:Misc-]{}
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+\section{Basic R Syntax}
+\label{sec:BRS}
+\subsection{Basics}
+\label{sec:BRS-basics}
+
+Comments start with a \textbf{\#}. Texts are surrounded by quotes
+\textbf{'text'} or double quotes \textbf{"text"}. Numbers are recognized
+directly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# This is a comment.}
+\StringTok{"Hello World"}  \CommentTok{\# text}
+\DecValTok{5}  \CommentTok{\# number}
+\end{Highlighting}
+\end{Shaded}
+
+\textit{print()} is not a must for printing, only when the code is
+executed within a function or loop. (But it is good practice to specify
+it.) \textit{cat()} functions as \textit{cout()} in C++, which
+`\textbackslash n' is usually necessary.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{"Hi, my name is Austin."}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Hi, my name is Austin."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{100}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Hi, my name is Austin."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Hi, my name is Austin."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Hi, my name is Austin."}\NormalTok{, }\DecValTok{100}\NormalTok{, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Hi, my name is Austin. 100
+\end{verbatim}
+
+\textit{paste()} can concatenate elements and returns a string. (`+'
+only works for numbers, not for strings!)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{text1 }\OtherTok{=} \FunctionTok{paste}\NormalTok{(}\StringTok{"Austin"}\NormalTok{, }\StringTok{"Good."}\NormalTok{)}
+\NormalTok{text1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Austin Good."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# \textquotesingle{}sep\textquotesingle{} sets the character added between elements, default is a single space}
+\NormalTok{text2 }\OtherTok{=} \FunctionTok{paste}\NormalTok{(}\StringTok{"Austin is "}\NormalTok{, }\DecValTok{20}\NormalTok{, }\StringTok{" years old."}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{)}
+\NormalTok{text2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Austin is 20 years old."
+\end{verbatim}
+
+Variables are created once initialized. \textbf{'<-'} is preferred over
+\textbf{'='}. Multiple assignments are available.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"Austin"}
+\NormalTok{height }\OtherTok{\textless{}{-}} \DecValTok{40}
+\NormalTok{a }\OtherTok{\textless{}{-}}\NormalTok{ b }\OtherTok{\textless{}{-}}\NormalTok{ c }\OtherTok{\textless{}{-}} \StringTok{"happy"}
+\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is"}\NormalTok{, a, b, c, }\StringTok{"\textasciitilde{}"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Austin is happy happy happy ~"
+\end{verbatim}
+
+\textbf{<<-} is the \textbf{global operator} in R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{var.g }\OtherTok{\textless{}\textless{}{-}} \DecValTok{33}
+\end{Highlighting}
+\end{Shaded}
+
+Assignment operators work both ways.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{"Austin"} \OtherTok{{-}\textgreater{}}\NormalTok{ y}
+\DecValTok{33} \OtherTok{{-}\textgreater{}\textgreater{}}\NormalTok{ Var}
+\FunctionTok{cat}\NormalTok{(y, Var)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Austin 33
+\end{verbatim}
+
+Variable names can contain characters(\textbf{a\~z}),
+digits(\textbf{0\~9}), underscores(\textbf{\_}) and
+periods(\textbf{\.}). They can only start with characters or
+\textbf{'.'}, while the latter can't be followed directly by a digit. In
+R, variable names \textbf{are case sensitive}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x    }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{x}\FloatTok{.1}  \OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{x1.\_ }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{.\_1  }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{.x1  }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{.\_.  }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{..   }\OtherTok{\textless{}{-}} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage
+\subsection{Math}
+\label{sec:BRS-math}
+
+The followings are built-in arithmetic operators. \newline Addition(+),
+subtraction(-), multiplication(*), division(/) and exponent(\^{}). The
+operation is conducted from left to right, with exponent(\^{}) being
+processed first, multiplication(*) and division(/) the second, and
+addition(+) and subtraction(-) the last.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{10} \SpecialCharTok{+} \DecValTok{6} \SpecialCharTok{*} \DecValTok{10} \SpecialCharTok{{-}} \DecValTok{6} \SpecialCharTok{/} \DecValTok{10} \SpecialCharTok{*} \DecValTok{6} \SpecialCharTok{\^{}} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -59.6
+\end{verbatim}
+
+The remainder/modulus(\%\%) and the quotient(\%/\%) are also built-in
+methods.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{10} \SpecialCharTok{\%\%} \DecValTok{6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{10} \SpecialCharTok{\%/\%} \DecValTok{6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+Common mathematical functions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{max}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)       }\CommentTok{\# returns the maximum number}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{min}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)       }\CommentTok{\# returns the minimum number}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sqrt}\NormalTok{(}\DecValTok{9}\NormalTok{)         }\CommentTok{\# returns the square root}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sqrt}\NormalTok{(}\FloatTok{8.5}\NormalTok{)       }\CommentTok{\# float input can be calculated as well }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.915476
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{abs}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)         }\CommentTok{\# returns the absolute value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ceiling}\NormalTok{(}\FloatTok{2.8}\NormalTok{)    }\CommentTok{\# returns the closest greater integer}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{floor}\NormalTok{(}\FloatTok{2.8}\NormalTok{)      }\CommentTok{\# returns the closest smaller integer}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(}\FloatTok{2.123}\NormalTok{, }\DecValTok{2}\NormalTok{) }\CommentTok{\# rounds to some decimal point, default is 0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.12
+\end{verbatim}
+
+\newpage
+\subsection{Conditions}
+\label{sec:BRS-condition}
+
+If statements \textit{if()} must be written in brackets. Curly brackets
+\{\} are used to define the scope of the code. \textit{else if()},
+following \textit{if()}, is for handling multiple conditions, while
+\textit{else()} catches all other conditions. Nested if statements are
+legal for R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{==} \DecValTok{2}\NormalTok{) \{}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"1 is equal to 2.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{\textgreater{}} \DecValTok{2}\NormalTok{) \{}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"1 is greater than 2.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \ControlFlowTok{if}\NormalTok{ (}\ConstantTok{FALSE}\NormalTok{) \{}
+    \FunctionTok{cat}\NormalTok{(}\StringTok{"I am right.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{cat}\NormalTok{(}\StringTok{"Don\textquotesingle{}t be stupid.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Don't be stupid.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (}\ConstantTok{TRUE}\NormalTok{) }
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"Curly brackets are unnecessary for one{-}line statement code.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Curly brackets are unnecessary for one-line statement code.
+\end{verbatim}
+
+\subsection{While Loops}
+\label{sec:BRS-while}
+
+While loops, \textit{while()}, are used for repeated statements as long
+as the condition in the parentheses () is satisfied. Curly brackets \{\}
+are used to define the scope of the code. The \textit{next} statement
+starts the next iteration, while the \textit{break} statement is for
+exiting the loop. Nested while loops are legal in R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{i }\OtherTok{=} \DecValTok{1}
+\ControlFlowTok{while}\NormalTok{ (i }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"i is always greater than 0, but this is not an infinite loop."}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{ (i }\SpecialCharTok{==} \DecValTok{3}\NormalTok{) \{}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"i equals to "}\NormalTok{, i, }\StringTok{" now. Exit loop."}\NormalTok{, }\AttributeTok{sep=}\StringTok{""}\NormalTok{))}
+    \ControlFlowTok{break}
+\NormalTok{  \}}
+  \ControlFlowTok{if}\NormalTok{ (i }\SpecialCharTok{\textgreater{}=} \DecValTok{1}\NormalTok{) \{}
+\NormalTok{    i }\OtherTok{=}\NormalTok{ i }\SpecialCharTok{+} \DecValTok{1}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"i equals to "}\NormalTok{, i, }\StringTok{" now."}\NormalTok{, }\AttributeTok{sep=}\StringTok{""}\NormalTok{))}
+    \ControlFlowTok{next} 
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "i is always greater than 0, but this is not an infinite loop."
+## [1] "i equals to 2 now."
+## [1] "i is always greater than 0, but this is not an infinite loop."
+## [1] "i equals to 3 now."
+## [1] "i is always greater than 0, but this is not an infinite loop."
+## [1] "i equals to 3 now. Exit loop."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \DecValTok{0}
+\ControlFlowTok{while}\NormalTok{ (x }\SpecialCharTok{==} \DecValTok{0}\NormalTok{)  }\CommentTok{\# curly brackets are unnecessary in a one{-}line statement}
+\NormalTok{  x }\OtherTok{=}\NormalTok{ x }\SpecialCharTok{+} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{For Loops}
+\label{sec:BRS-for}
+
+For loops, \textit{for()}, iterates through a sequence. Parentheses, (),
+are a must. Curly brackets \{\} are used to define the scope of the
+code. The \textit{next} statement is used to jump to the next iteration,
+and the \textit{break} statement is used to exit the loop. Nested for
+loops are legal in R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{) \{}
+  \ControlFlowTok{if}\NormalTok{ (i }\SpecialCharTok{==} \DecValTok{4}\NormalTok{)}
+    \ControlFlowTok{next} 
+  \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (i }\SpecialCharTok{\textgreater{}} \DecValTok{4}\NormalTok{)}
+    \ControlFlowTok{break}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"i equals to "}\NormalTok{, i, }\StringTok{" now."}\NormalTok{, }\AttributeTok{sep=}\StringTok{""}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "i equals to 1 now."
+## [1] "i equals to 2 now."
+## [1] "i equals to 3 now."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (x }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Curly brackets are unnecessary in a one{-}line statement."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Curly brackets are unnecessary in a one-line statement."
+## [1] "Curly brackets are unnecessary in a one-line statement."
+## [1] "Curly brackets are unnecessary in a one-line statement."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{) \{}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)}
+    \FunctionTok{cat}\NormalTok{(}\DecValTok{3}\SpecialCharTok{*}\NormalTok{(i}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{+}\NormalTok{j)}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 123
+## 456
+## 789
+\end{verbatim}
+
+\subsection{Functions}
+\label{sec:BRS-function}
+
+Functions can be defined by keyword \textit{function()}. Curly brackets
+\{\} define the scope of the code. Parameters can be specified in the
+parentheses (), which those with default values must be placed last.
+Values in \textit{return()} are returned.
+\textbf{It is inappropriate to rely on implicit return. Always specify \textit{return()} whenever needed}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myfunc }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{y=}\ConstantTok{FALSE}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"x equals to "}\NormalTok{, x, }\StringTok{"."}\NormalTok{, }\AttributeTok{sep=}\StringTok{""}\NormalTok{))}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"The default value of y is "}\NormalTok{, y, }\StringTok{"."}\NormalTok{, }\AttributeTok{sep=}\StringTok{""}\NormalTok{))}
+  \ControlFlowTok{if}\NormalTok{ (y }\SpecialCharTok{!=} \ConstantTok{FALSE}\NormalTok{) \{}
+    \FunctionTok{print}\NormalTok{(}\StringTok{"x, the variable, is a parameter."}\NormalTok{)}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{", the value been passed, is an argument."}\NormalTok{, }\AttributeTok{sep=}\StringTok{""}\NormalTok{))}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"The current argument of parameter y is "}\NormalTok{, y, }\StringTok{"."}\NormalTok{, }\AttributeTok{sep=}\StringTok{""}\NormalTok{))}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"myfunc() returns the value of y, "}\NormalTok{, y, }\StringTok{"."}\NormalTok{, }\AttributeTok{sep=}\StringTok{""}\NormalTok{))}
+\NormalTok{\}}
+\FunctionTok{myfunc}\NormalTok{(}\DecValTok{100}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "x equals to 100."
+## [1] "The default value of y is TRUE."
+## [1] "x, the variable, is a parameter."
+## [1] "100, the value been passed, is an argument."
+## [1] "The current argument of parameter y is TRUE."
+\end{verbatim}
+
+\begin{verbatim}
+## [1] "myfunc() returns the value of y, TRUE."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{oneLineFun }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(x)}
+  \FunctionTok{print}\NormalTok{(x)}
+\FunctionTok{oneLineFun}\NormalTok{(}\StringTok{"One{-}line statement functions without curly brackets are legal."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "One-line statement functions without curly brackets are legal."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{oneLineFun}\NormalTok{(}\StringTok{"But they are mostly useless."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "But they are mostly useless."
+\end{verbatim}
+
+\newpage
+\section{Data Type}
+\label{sec:VAR}
+
+\textit{class()} is used to check the data type of a variable. \newline
+It is legal to change a data type of a variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{var }\OtherTok{\textless{}{-}} \FloatTok{11.11}
+\FunctionTok{class}\NormalTok{(var)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{var }\OtherTok{\textless{}{-}} \StringTok{"11.11"}
+\FunctionTok{class}\NormalTok{(var)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+Data types can also be converted via \textit{as.numeric()},
+\textit{as.integer()}, \textit{as.character()}, \textit{as.logical()}
+and \textit{as.complex()}.
+
+\newpage
+\subsection{Numeric}
+\label{sec:VAR-numeric}
+
+Numbers are recognized as `numeric' by default, either with decimals or
+not.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x.num }\OtherTok{\textless{}{-}} \DecValTok{11}
+\FunctionTok{class}\NormalTok{(x.num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x.num }\OtherTok{\textless{}{-}} \FloatTok{11.11}
+\FunctionTok{class}\NormalTok{(x.num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.integer}\NormalTok{(x.num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.character}\NormalTok{(x.num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "11.11"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.logical}\NormalTok{(x.num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.complex}\NormalTok{(x.num)  }\CommentTok{\# the imaginary part is 0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11.11+0i
+\end{verbatim}
+
+\newpage
+\subsection{Integer}
+\label{sec:VAR-integer}
+
+Numbers can be specified as `integer' by following the digits with
+\textbf{'L'}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x.int }\OtherTok{\textless{}{-}} \DecValTok{11}\DataTypeTok{L}  
+\FunctionTok{class}\NormalTok{(x.int)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.numeric}\NormalTok{(x.int)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.character}\NormalTok{(x.int)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "11"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.logical}\NormalTok{(x.int)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.complex}\NormalTok{(x.int)  }\CommentTok{\# the imaginary part is 0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11+0i
+\end{verbatim}
+
+\newpage
+\subsection{Character}
+\label{sec:VAR-character}
+
+Single line and Multiline string. Note that indentations are recognized
+as parts of a multiline string.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{str }\OtherTok{\textless{}{-}} \StringTok{"string"}
+\NormalTok{str }\OtherTok{\textless{}{-}} \StringTok{"This is a }
+\StringTok{String."}
+\FunctionTok{print}\NormalTok{(str)    }\CommentTok{\# a \textquotesingle{}\textbackslash{}n\textquotesingle{} will be placed at each line break}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "This is a \nString."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(str)      }\CommentTok{\# \textquotesingle{}\textbackslash{}n\textquotesingle{} won\textquotesingle{}t appear, but there will still be line breaks}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## This is a 
+## String.
+\end{verbatim}
+
+Calculate the number of characters in a string. Note that
+\textit{length()} returns the length of a vector, not the number of
+characters.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{str }\OtherTok{\textless{}{-}} \StringTok{"Hello World"}
+\FunctionTok{nchar}\NormalTok{(str)  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(str)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+Check if a string contains a specific character.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grepl}\NormalTok{(}\StringTok{"H"}\NormalTok{, str)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grepl}\NormalTok{(}\StringTok{"A"}\NormalTok{, str)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+Combine two strings.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{str }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(}\StringTok{"Hello"}\NormalTok{, }\StringTok{"World"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Escape characters. Note that using \textit{print()} or auto-printing
+will print out the backslash. Use \textit{cat()} to show the intended
+string.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{text }\OtherTok{\textless{}{-}} \StringTok{"I love }\SpecialCharTok{\textbackslash{}"}\StringTok{you}\SpecialCharTok{\textbackslash{}"}\StringTok{"}
+\FunctionTok{print}\NormalTok{(text)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "I love \"you\""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(text)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## I love "you"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"I love }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{ you"}\NormalTok{, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)  }\CommentTok{\# \textquotesingle{}\textbackslash{}\textbackslash{}\textquotesingle{} a backslash}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## I love \ you
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"I love }\SpecialCharTok{\textbackslash{}r}\StringTok{ you"}\NormalTok{, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)  }\CommentTok{\# \textquotesingle{}\textbackslash{}r\textquotesingle{} covers the previous output}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## I love  you
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"I love }\SpecialCharTok{\textbackslash{}t}\StringTok{ you"}\NormalTok{, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)  }\CommentTok{\# \textquotesingle{}\textbackslash{}t\textquotesingle{} add a tab}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## I love    you
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#cat("I love \textbackslash{}b you", "\textbackslash{}n")  \# \textquotesingle{}\textbackslash{}b\textquotesingle{} backspace}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x.chr }\OtherTok{\textless{}{-}} \StringTok{"11.11"}
+\FunctionTok{class}\NormalTok{(x.chr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.numeric}\NormalTok{(x.chr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11.11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.integer}\NormalTok{(x.chr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.logical}\NormalTok{(x.chr)  }\CommentTok{\# not TRUE or FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.complex}\NormalTok{(x.chr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11.11+0i
+\end{verbatim}
+
+If characters are included, the conversion leads to `NA'.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x.chr }\OtherTok{\textless{}{-}} \StringTok{"11.11+1i"}
+\FunctionTok{as.numeric}\NormalTok{(x.chr)  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: NAs introduced by coercion
+\end{verbatim}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.integer}\NormalTok{(x.chr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: NAs introduced by coercion
+\end{verbatim}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.logical}\NormalTok{(x.chr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.complex}\NormalTok{(x.chr)      }\CommentTok{\# conversion will work only in this form}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11.11+1i
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x.chr }\OtherTok{\textless{}{-}} \StringTok{"11.11+ 1i"}   
+\FunctionTok{as.complex}\NormalTok{(x.chr)      }\CommentTok{\# space is not ignored}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: NAs introduced by coercion
+\end{verbatim}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\newpage
+\subsection{Logical}
+\label{sec:VAR-logical}
+
+\textbf{TRUE} is stored as `1' and \textbf{FALSE} is stored as `0'. For
+numeric, integer and complex, it is recognized as \textbf{TRUE} unless
+the value is 0. Characters can't be converted into logical.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x.log }\OtherTok{\textless{}{-}} \ConstantTok{TRUE}
+\FunctionTok{class}\NormalTok{(x.log)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "logical"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.numeric}\NormalTok{(x.log)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.integer}\NormalTok{(x.log)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.character}\NormalTok{(x.log)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "TRUE"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.complex}\NormalTok{(x.log)  }\CommentTok{\# imaginary part is 0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1+0i
+\end{verbatim}
+
+\textbf{TRUE} and \textbf{FALSE} are returned by comparisons done by
+comparison operators. Note that multiple comparison (eg.
+\(x == y == z\)) is \textbf{illegal} in R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{==} \DecValTok{2}   \CommentTok{\# equal}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{!=} \DecValTok{2}   \CommentTok{\# not equal}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{\textgreater{}}  \DecValTok{2}   \CommentTok{\# greater than}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{\textless{}}  \DecValTok{2}   \CommentTok{\# less than}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{\textgreater{}=} \DecValTok{2}   \CommentTok{\# not less than}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{\textless{}=} \DecValTok{2}   \CommentTok{\# not greater than}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+Logical operators can combine conditional statements. \textbf{\&} and
+\textbf{|} are \textbf{element-wise operators}, which they can compare
+each element in an object (such as vector, array, matrix, etc.). Note
+that logical comparison are processed \textbf{from right to left}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{\&}  \ConstantTok{FALSE} \SpecialCharTok{|} \ConstantTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{|}  \ConstantTok{FALSE} \SpecialCharTok{\&} \ConstantTok{FALSE}   
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{||} \ConstantTok{FALSE}           \CommentTok{\# or}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{\&\&} \ConstantTok{FALSE}           \CommentTok{\# and}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialCharTok{!}\DecValTok{1}                      \CommentTok{\# not}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\newpage
+\subsection{Complex}
+\label{sec:VAR-complex}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x.cpx }\OtherTok{\textless{}{-}} \DecValTok{1}\DataTypeTok{i}\SpecialCharTok{+}\DecValTok{2}  \CommentTok{\# \textquotesingle{}i\textquotesingle{} is the imaginary part}
+\FunctionTok{class}\NormalTok{(x.cpx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "complex"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{2}\SpecialCharTok{+}\DecValTok{1}\DataTypeTok{i}
+\FunctionTok{class}\NormalTok{(x.cpx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "complex"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.integer}\NormalTok{(x.cpx)  }\CommentTok{\# the imaginary part is dropped}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: imaginary parts discarded in coercion
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.numeric}\NormalTok{(x.cpx)  }\CommentTok{\# the imaginary part is dropped}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: imaginary parts discarded in coercion
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.character}\NormalTok{(x.cpx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2+1i"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.logical}\NormalTok{(x.cpx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\newpage
+\section{Data Structure}
+\label{sec:DS}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{\%in\%} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# \%*\% matrix multiplication}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage
+\section{Figure}
+\label{sec:Fig}
+
+\newpage
+\section{Statistical Analysis}
+\label{sec:SA}
+
+\newpage
+\section{String Manipulation}
+\label{sec:SM}
+
+\newpage
+\section{Important Packages}
+\label{sec:Pkg}
+
+\newpage
+\section{Misc}
+\label{sec:Misc}
+
+\end{document}

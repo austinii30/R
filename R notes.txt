@@ -1,0 +1,23 @@
+# R version
+R --version  # shell
+package_version(R.version)  # R shell
+getRversion()               # R shell
+version                     # R shell
+
+# package version
+installed.packages(fields = c("Package", "Version"))  # R shell
+packageVersion("PKG")
+packageDescription("PKG")
+.libPaths()
+
+# session
+search()
+sessionInfo()
+
+# package info
+library(help="PKG")  # list the information about the package
+data(package = .packages(all.available = TRUE))  # list all dataset within the package
+
+# change decimal symbol
+options(OutDec=",")
+options(OutDec=".")

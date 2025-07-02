@@ -1,0 +1,102 @@
+---
+title: "Learning From Data 112-2 Documentary"
+author: 
+  - CHIH-TSE LIU
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  pdf_document:
+    fig_width: 8
+    fig_height: 3.5  
+    latex_engine: "xelatex"
+    includes:
+      in_header: "Rnote.tex"
+    keep_tex: true
+header-includes:
+  - \renewcommand{\and}{\\}
+fontsize: 12pt
+abstract: 
+  This.
+---
+
+\begin{center}
+Table of Contents 
+\label{sec:TOP}
+\begin{itemize}
+\item \hyperref[sec:PRE]{Packages and Functions}
+\item \hyperref[sec:DAT]{Data Overview}
+\item \hyperref[sec:VAR]{Variable Inspection}
+\item \hyperref[sec:EDA]{Exploratory Data Analysis}
+\item \hyperref[sec:]{}
+\item \hyperref[sec:]{}
+\item \hyperref[sec:]{}
+\end{itemize}
+
+% '\thispagestyle{empty}'  surpresses page number for the cover
+% '\pagenumbering{arabic}' resets page number
+\end{center}
+
+\thispagestyle{empty} 
+\clearpage
+\pagenumbering{arabic}
+
+\externaldocument{Outline}
+
+```{r setup, include = FALSE}
+# hide warnings and messages
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+
+# prevent R output from exceeding page margin
+# not all R functions respects this setting
+options(width = 75)
+
+# set graph size
+#knitr::opts_chunk$set(out.height = "50%", out.width = "100%")
+
+# 75 is the optimal maximum limit for characters
+#########-#########-#########-#########-#########-#########-#########-#####
+```
+
+\newpage
+\section{Packages and Functions Specified}
+\label{sec:PRE}
+\hypertarget{sec:PRE}{}
+## Packages
+```{r}
+# for error normality test (MLR.6)
+library(nortest)
+
+# for homoskedasticity test (MLR.5)
+# library(alr3)
+
+# for box-cox transformation (MLR.5, MLR.6)
+library(MASS)
+
+# for data frame manipulation
+library(dplyr)
+
+# for EDA
+library(ggplot2)
+
+# for GLS
+library(nlme)
+
+# for model selection
+# library(ALSM)
+library(leaps)
+library(olsrr)
+
+# for heatmaps and graphs
+library(pheatmap)
+library(PerformanceAnalytics)
+
+# for large data sets manipulation
+library(data.table)
+
+# for graphing
+library(lattice)
+library(RColorBrewer)
+library(stringr)
+
+# 
+library(corrplot)
+```

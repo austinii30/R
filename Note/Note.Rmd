@@ -1,0 +1,468 @@
+---
+title: "R Note"
+author: 
+  - Chih-Tse Liu
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  pdf_document:
+    fig_width: 8
+    fig_height: 3.5  
+    latex_engine: "xelatex"
+    includes:
+      in_header: "Rnote.tex"
+    keep_tex: true
+header-includes:
+  - \renewcommand{\and}{\\}
+fontsize: 12pt
+---
+
+
+\section{Table of Contents}
+\label{sec:ToC}
+\begin{enumerate}
+\item \hyperref[sec:BRS]{Basic R Syntax}
+  \begin{enumerate}
+  \item \hyperref[sec:BRS-basics]{Basics}
+  \item \hyperref[sec:BRS-math]{Math}
+  \item \hyperref[sec:BRS-conditions]{Conditions}
+  \item \hyperref[sec:BRS-loops]{Loops}
+  \item \hyperref[sec:BRS-function]{Function}
+  \item \hyperref[sec:BRS-]{}
+  \item \hyperref[sec:BRS-]{}
+  \end{enumerate}
+\item \hyperref[sec:VAR]{Data Type}
+  \begin{enumerate}
+  \item \hyperref[sec:VAR-numeric]{Numeric}
+  \item \hyperref[sec:VAR-integer]{Integer}
+  \item \hyperref[sec:VAR-character]{Character}
+  \item \hyperref[sec:VAR-logical]{Logical}
+  \item \hyperref[sec:VAR-factor]{Factor}
+  \item \hyperref[sec:VAR-complex]{Complex}
+  \item \hyperref[sec:VAR-]{}
+  \end{enumerate}
+\item \hyperref[sec:DS]{Data Structure}
+  \begin{enumerate}
+  \item \hyperref[sec:DS-vector]{Vector}
+  \item \hyperref[sec:DS-array]{Array}
+  \item \hyperref[sec:DS-dataframe]{Data Frame}
+  \item \hyperref[sec:DS-list]{List}
+  \item \hyperref[sec:DS-matrix]{Matrix}
+  \item \hyperref[sec:DS-]{}
+  \item \hyperref[sec:DS-]{}
+  \item \hyperref[sec:DS-]{}
+  \item \hyperref[sec:DS-]{}
+  \end{enumerate}
+\item \hyperref[sec:Fig]{Figures}
+  \begin{enumerate}
+  \item \hyperref[sec:Fig-]{Scatter Plot}
+  \item \hyperref[sec:Fig-]{Box Plot}
+  \item \hyperref[sec:Fig-]{}
+  \end{enumerate}
+\item \hyperref[sec:SA]{Statistical Analysis}
+  \begin{enumerate}
+  \item \hyperref[sec:SA-EDA]{Exploratory Data Analysis}
+  \item \hyperref[sec:SA-LR]{Linear Regression}
+  \item \hyperref[sec:SA-PCA]{Principal Component Analysis}
+  \item \hyperref[sec:SA-FA]{Factor Analysis}
+  \item \hyperref[sec:SA-CA]{Clustering Analysis}
+  \item \hyperref[sec:SA-DA]{Discriminant Analysis}
+  \item \hyperref[sec:SA-SEM]{Structural Equation Modelling}
+  \item \hyperref[sec:SA-]{}
+  \end{enumerate}
+\item \hyperref[sec:SM]{String Manipulation}
+  \begin{enumerate}
+  \item \hyperref[sec:SM-]{}
+  \item \hyperref[sec:SM-]{}
+  \item \hyperref[sec:SM-]{}
+  \end{enumerate}
+\item \hyperref[sec:Pkg]{Packages}
+  \begin{enumerate}
+  \item \hyperref[sec:Pkg-]{}
+  \item \hyperref[sec:Pkg-]{}
+  \item \hyperref[sec:Pkg-]{}
+  \end{enumerate}
+\item \hyperref[sec:Misc]{Misc}
+  \begin{enumerate}
+  \item \hyperref[sec:Misc-]{}
+  \item \hyperref[sec:Misc-]{}
+  \item \hyperref[sec:Misc-]{}
+  \end{enumerate}
+\end{enumerate}
+
+```{r, echo = F}
+# Setup
+```
+
+
+\newpage
+\section{Basic R Syntax}
+\label{sec:BRS}
+\subsection{Basics}
+\label{sec:BRS-basics}
+Comments start with a \textbf{\#}. Texts are surrounded by quotes \textbf{'text'} or double quotes \textbf{"text"}. Numbers are recognized directly.
+```{r, eval = F}
+# This is a comment.
+"Hello World"  # text
+5  # number
+```
+
+\textit{print()} is not a must for printing, only when the code is executed within a function or loop. (But it is good practice to specify it.) \textit{cat()} functions as \textit{cout()} in C++, which '\\n' is usually necessary.
+```{r}
+"Hi, my name is Austin."
+100
+print("Hi, my name is Austin.")
+cat("Hi, my name is Austin.", 100, "\n")
+```
+
+\textit{paste()} can concatenate elements and returns a string. ('+' only works for numbers, not for strings!)
+```{r}
+text1 = paste("Austin", "Good.")
+text1
+# 'sep' sets the character added between elements, default is a single space
+text2 = paste("Austin is ", 20, " years old.", sep = "")
+text2
+```
+
+Variables are created once initialized. \textbf{'<-'} is preferred over \textbf{'='}. Multiple assignments are available.
+```{r}
+x <- "Austin"
+height <- 40
+a <- b <- c <- "happy"
+paste(x, "is", a, b, c, "~")
+```
+
+\textbf{<<-} is the \textbf{global operator} in R.
+```{r}
+var.g <<- 33
+```
+
+Assignment operators work both ways.
+```{r}
+"Austin" -> y
+33 ->> Var
+cat(y, Var)
+```
+
+Variable names can contain characters(\textbf{a\~z}), digits(\textbf{0\~9}), underscores(\textbf{\_}) and periods(\textbf{\.}). They can only start with characters or \textbf{'.'}, while the latter can't be followed directly by a digit. In R, variable names \textbf{are case sensitive}.
+```{r}
+x    <- 1
+x.1  <- 1
+x1._ <- 1
+._1  <- 1
+.x1  <- 1
+._.  <- 1
+..   <- 1
+```
+
+\newpage
+\subsection{Math}
+\label{sec:BRS-math}
+The followings are built-in arithmetic operators. \newline
+Addition(+), subtraction(\-), multiplication(\*), division(/) and exponent(^). The operation is conducted from left to right, with exponent(^) being processed first, multiplication(\*) and division(/) the second, and addition(+) and subtraction(-) the last. 
+```{r}
+10 + 6 * 10 - 6 / 10 * 6 ^ 3
+```
+
+The remainder/modulus(\%\%) and the quotient(\%/\%) are also built-in methods.
+```{r}
+10 %% 6
+10 %/% 6
+```
+
+Common mathematical functions.
+```{r}
+max(1:10)       # returns the maximum number
+min(1:10)       # returns the minimum number
+sqrt(9)         # returns the square root
+sqrt(8.5)       # float input can be calculated as well 
+abs(-1)         # returns the absolute value
+ceiling(2.8)    # returns the closest greater integer
+floor(2.8)      # returns the closest smaller integer
+round(2.123, 2) # rounds to some decimal point, default is 0
+```
+
+\newpage
+\subsection{Conditions}
+\label{sec:BRS-condition}
+If statements \textit{if()} must be written in brackets. Curly brackets \{\} are used to define the scope of the code. \textit{else if()}, following \textit{if()}, is for handling multiple conditions, while \textit{else()} catches all other conditions. Nested if statements are legal for R.
+```{r}
+if (1 == 2) {
+  cat("1 is equal to 2.\n")
+} else if (1 > 2) {
+  cat("1 is greater than 2.\n")
+} else {
+  if (FALSE) {
+    cat("I am right.\n")
+  } else {
+    cat("Don't be stupid.\n")
+  }
+}
+
+if (TRUE) 
+  cat("Curly brackets are unnecessary for one-line statement code.\n")
+```
+
+\subsection{While Loops}
+\label{sec:BRS-while}
+While loops, \textit{while()}, are used for repeated statements as long as the condition in the parentheses () is satisfied. Curly brackets \{\} are used to define the scope of the code. The \textit{next} statement starts the next iteration, while the \textit{break} statement is for exiting the loop. Nested while loops are legal in R.
+```{r}
+i <- 1
+while (i > 0) {
+  print("i is always greater than 0, but this is not an infinite loop.")
+  if (i == 3) {
+    print(paste("i equals to ", i, " now. Exit loop.", sep=""))
+    break
+  }
+  if (i >= 1) {
+    i <- i + 1
+    print(paste("i equals to ", i, " now.", sep=""))
+    next 
+  }
+}
+
+x <- 0
+while (x == 0)  # curly brackets are unnecessary in a one-line statement
+  x = x + 1
+```
+
+\subsection{For Loops}
+\label{sec:BRS-for}
+For loops, \textit{for()}, iterates through a sequence. Parentheses, (), are a must. Curly brackets \{\} are used to define the scope of the code. The \textit{next} statement is used to jump to the next iteration, and the \textit{break} statement is used to exit the loop. Nested for loops are legal in R.
+```{r}
+for (i in 1:10) {
+  if (i == 4)
+    next 
+  else if (i > 4)
+    break
+  print(paste("i equals to ", i, " now.", sep=""))
+}
+
+for (x in 1:3)
+  print("Curly brackets are unnecessary in a one-line statement.")
+
+for (i in 1:3) {
+  for (j in 1:3)
+    cat(3*(i-1)+j)
+  cat("\n")
+}
+```
+
+\subsection{Functions}
+\label{sec:BRS-function}
+Functions can be defined by keyword \textit{function()}. Curly brackets \{\} define the scope of the code. Parameters can be specified in the parentheses (), which those with default values must be placed last. Values in \textit{return()} are returned. \textbf{It is inappropriate to rely on implicit return. Always specify \textit{return()} whenever needed}.
+```{r}
+myfunc <- function(x, y=FALSE) {
+  print(paste("x equals to ", x, ".", sep=""))
+  print(paste("The default value of y is ", y, ".", sep=""))
+  if (y != FALSE) {
+    print("x, the variable, is a parameter.")
+    print(paste(x, ", the value been passed, is an argument.", sep=""))
+    print(paste("The current argument of parameter y is ", y, ".", sep=""))
+  }
+  return(paste("myfunc() returns the value of y, ", y, ".", sep=""))
+}
+myfunc(100, TRUE)
+
+oneLineFun <- function(x)
+  print(x)
+oneLineFun("One-line statement functions without curly brackets are legal.")
+oneLineFun("But they are mostly useless.")
+```
+Nested functions are available in R. Since functions written inside other functions are undefined in the global scope, they can't be called directly. They must first be returned to be called. We can also call a function within another function to achieve our goal (while strictly speaking, the functions are not written \'nestedly\'). 
+```{r}
+pow <- function(x) {
+  pow.2 <- function(y) 
+    return(x ^ y)
+  return(pow.2)
+}
+res <- pow(3)
+res(2)
+pow(3)(2)  # this is valid!
+
+factorial <- function(x) {
+  result <- 1
+  for (i in 2:as.integer(x))
+    result <- result * i 
+  return(result)
+}
+factorial(factorial(3))
+```
+
+\newpage
+\section{Data Type}
+\label{sec:VAR}
+\textit{class()} is used to check the data type of a variable. \newline
+It is legal to change a data type of a variable.
+```{r}
+var <- 11.11
+class(var)
+var <- "11.11"
+class(var)
+```
+Data types can also be converted via \textit{as.numeric()}, \textit{as.integer()}, \textit{as.character()}, \textit{as.logical()} and \textit{as.complex()}.
+
+\newpage
+\subsection{Numeric}
+\label{sec:VAR-numeric}
+Numbers are recognized as 'numeric' by default, either with decimals or not.
+```{r}
+x.num <- 11
+class(x.num)
+x.num <- 11.11
+class(x.num)
+as.integer(x.num)
+as.character(x.num)
+as.logical(x.num)
+as.complex(x.num)  # the imaginary part is 0
+```
+
+\newpage
+\subsection{Integer}
+\label{sec:VAR-integer}
+Numbers can be specified as 'integer' by following the digits with \textbf{'L'}.
+```{r}
+x.int <- 11L  
+class(x.int)
+as.numeric(x.int)
+as.character(x.int)
+as.logical(x.int)
+as.complex(x.int)  # the imaginary part is 0
+```
+
+\newpage
+\subsection{Character}
+\label{sec:VAR-character}
+Single line and Multiline string. Note that indentations are recognized as parts of a multiline string.
+```{r}
+str <- "string"
+str <- "This is a 
+String."
+print(str)    # a '\n' will be placed at each line break
+cat(str)      # '\n' won't appear, but there will still be line breaks
+```
+
+Calculate the number of characters in a string. Note that \textit{length()} returns the length of a vector, not the number of characters.
+```{r}
+str <- "Hello World"
+nchar(str)  
+length(str)
+```
+
+Check if a string contains a specific character.
+```{r}
+grepl("H", str)
+grepl("A", str)
+```
+
+Combine two strings.
+```{r}
+str <- paste("Hello", "World")
+```
+
+Escape characters. Note that using \textit{print()} or auto-printing will print out the backslash. Use \textit{cat()} to show the intended string.
+```{r}
+text <- "I love \"you\""
+print(text)
+cat(text)
+
+cat("I love \\ you", "\n")  # '\\' a backslash
+cat("I love \r you", "\n")  # '\r' covers the previous output
+cat("I love \t you", "\n")  # '\t' add a tab
+#cat("I love \b you", "\n")  # '\b' backspace
+```
+
+```{r}
+x.chr <- "11.11"
+class(x.chr)
+as.numeric(x.chr)
+as.integer(x.chr)
+as.logical(x.chr)  # not TRUE or FALSE
+as.complex(x.chr)
+```
+
+If characters are included, the conversion leads to 'NA'.
+```{r}
+x.chr <- "11.11+1i"
+as.numeric(x.chr)  
+as.integer(x.chr)
+as.logical(x.chr)
+as.complex(x.chr)      # conversion will work only in this form
+x.chr <- "11.11+ 1i"   
+as.complex(x.chr)      # space is not ignored
+```
+
+\newpage
+\subsection{Logical}
+\label{sec:VAR-logical}
+\textbf{TRUE} is stored as '1' and \textbf{FALSE} is stored as '0'. For numeric, integer and complex, it is recognized as \textbf{TRUE} unless the value is 0. Characters can't be converted into logical.
+```{r}
+x.log <- TRUE
+class(x.log)
+as.numeric(x.log)
+as.integer(x.log)
+as.character(x.log)
+as.complex(x.log)  # imaginary part is 0
+```
+
+\textbf{TRUE} and \textbf{FALSE} are returned by comparisons done by comparison operators. Note that multiple comparison (eg. $x == y == z$) is \textbf{illegal} in R.
+```{r}
+1 == 2   # equal
+1 != 2   # not equal
+1 >  2   # greater than
+1 <  2   # less than
+1 >= 2   # not less than
+1 <= 2   # not greater than
+```
+
+Logical operators can combine conditional statements. \textbf{\&} and \textbf{|} are \textbf{element-wise operators}, which they can compare each element in an object (such as vector, array, matrix, etc.). Note that logical comparison are processed \textbf{from right to left}.
+```{r}
+TRUE &  FALSE | FALSE
+TRUE |  FALSE & FALSE   
+TRUE || FALSE           # or
+TRUE && FALSE           # and
+!1                      # not
+```
+
+\newpage
+\subsection{Complex}
+\label{sec:VAR-complex}
+```{r}
+x.cpx <- 1i+2  # 'i' is the imaginary part
+class(x.cpx)
+x <- 2+1i
+class(x.cpx)
+as.integer(x.cpx)  # the imaginary part is dropped
+as.numeric(x.cpx)  # the imaginary part is dropped
+as.character(x.cpx)
+as.logical(x.cpx)
+```
+
+
+\newpage
+\section{Data Structure}
+\label{sec:DS}
+```{r}
+1:10
+1 %in% 1:10
+# %*% matrix multiplication
+```
+
+\newpage
+\section{Figure}
+\label{sec:Fig}
+
+\newpage
+\section{Statistical Analysis}
+\label{sec:SA}
+
+\newpage
+\section{String Manipulation}
+\label{sec:SM}
+
+\newpage
+\section{Important Packages}
+\label{sec:Pkg}
+
+\newpage
+\section{Misc}
+\label{sec:Misc}

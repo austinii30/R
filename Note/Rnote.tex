@@ -1,0 +1,47 @@
+% header.tex
+
+% \documentclass{article}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{xeCJK}  % for handling chinese, japanese, korean
+\usepackage{hyperref}
+% 
+% \usepackage{arxiv}
+% \usepackage[utf8]{inputenc} % allow utf-8 input
+% \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+% \usepackage{url}            % simple URL typesetting
+% \usepackage{booktabs}       % professional-quality tables
+% \usepackage{amsfonts}       % blackboard math symbols
+% \usepackage{nicefrac}       % compact symbols for 1/2, etc.
+% \usepackage{microtype}      % microtypography
+% \usepackage{graphicx}
+% \usepackage{natbib}
+% \usepackage{doi}
+% \usepackage{float} %
+% \usepackage{amsmath} %
+
+
+\setCJKmainfont{標楷體}  % set main font
+
+\pagestyle{fancy}
+\fancyhf{}  % clears the header and footer
+\renewcommand{\footrulewidth}{0.6pt}  % Change the thickness of the line (0.4pt is the default)
+\renewcommand{\headrulewidth}{0.6pt}
+
+% helps to wrap up codes and texts
+% unfortunately, the output will be very ugly
+% Note: "pandoc_args: --listings" is a must in the .Rmd file
+%\lstset{
+    %breaklines = true,
+%}
+
+% Add text above/below the header/footer line
+% \lhead{\textit{R Note}}
+% \lhead{\textit{\nouppercase{\leftmark}}: \textit{\nouppercase{\rightmark}}  % Show section name on the top left of every page
+\lhead{\textit{\nouppercase{\leftmark}: \nouppercase{\rightmark}}}  % Show section name on the top left of every page
+\rhead{\thepage}  % Place the page number on the right side of the footer
+\lfoot{\hyperref[sec:ToC]{\textcolor{blue}{Back to \textbf{Table of Contents}}}}  % date
+\rfoot{\textit{\copyright\ Created by Potumas Liu}}  % Replace with your desired text
+
+\newcommand{\sectionbreak}{\clearpage}
